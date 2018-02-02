@@ -58,3 +58,52 @@ console.log('Question 2');
 (function doubleNumber(n) {
   return n * 2;
 })(5);
+
+// 4. Button 5
+
+// Code is adding 5 buttons to the page and an alert onClick
+
+// PT 1 - What will be alerted to the screen when
+// button number 5 is clicked, and why is that data alerted
+
+// A: The number 6 will be alerted for button 5.
+///// Actually, the number 6 will be alerted for all buttons
+///// Why? Because i = 6 by the time button is clicked
+///// loops 5 times and appends Button and number.
+///// adds 1 to i and doesn't loop because i > 5
+///// when button is clicked, the value of i is 6
+function createButtons() {
+  for (var i = 1; i <= 5; i++) {
+    var body = document.getElementsByTagName('BODY')[0];
+    var button = document.createElement('BUTTON');
+    button.innerHTML = 'Button ' + i;
+    button.onclick = function() {
+      alert('This is button ' + i);
+    };
+    body.appendChild(button);
+  }
+}
+createButtons();
+
+// PT 2 - How can you fix the function?
+// A: With an IIFE
+// place the button.onclick inside the IIFE
+// Invoke the IIFE with i as an argument
+// Replace i with the arg passed into the function
+// On each iteration, we pass the current value of i into the IIFE
+// and being stored as our num arg which is now param (because it executes Immediately)
+// num is encapsulated in the scope of our IIFE so num param will never change
+function createButtons() {
+  for (var i = 1; i <= 5; i++) {
+    var body = document.getElementsByTagName('BODY')[0];
+    var button = document.createElement('BUTTON');
+    button.innerHTML = 'Button ' + i;
+    (function(num) {
+      button.onclick = function() {
+        alert('This is button ' + num);
+      };
+    })(i);
+    body.appendChild(button);
+  }
+}
+createButtons();
