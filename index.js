@@ -66,12 +66,6 @@ console.log('Question 2');
 // PT 1 - What will be alerted to the screen when
 // button number 5 is clicked, and why is that data alerted
 
-// A: The number 6 will be alerted for button 5.
-///// Actually, the number 6 will be alerted for all buttons
-///// Why? Because i = 6 by the time button is clicked
-///// loops 5 times and appends Button and number.
-///// adds 1 to i and doesn't loop because i > 5
-///// when button is clicked, the value of i is 6
 function createButtons() {
   for (var i = 1; i <= 5; i++) {
     var body = document.getElementsByTagName('BODY')[0];
@@ -85,8 +79,16 @@ function createButtons() {
 }
 createButtons();
 
+// A PT 1: The number 6 will be alerted for button 5.
+///// Actually, the number 6 will be alerted for all buttons
+///// Why? Because i = 6 by the time button is clicked
+///// loops 5 times and appends Button and number.
+///// adds 1 to i and doesn't execude code in the loop loop because i > 5
+///// when button is clicked, the value of i is 6
+
 // PT 2 - How can you fix the function?
-// A: With an IIFE
+
+// A PT 2: With an IIFE
 // place the button.onclick inside the IIFE
 // Invoke the IIFE with i as an argument
 // Replace i with the arg passed into the function
@@ -107,3 +109,72 @@ function createButtons() {
   }
 }
 createButtons();
+
+// Another solution
+function createCorrectButtons() {
+  for (var i = 1; i <= 5; i++) {
+    var body = document.getElementsByTagName('BODY')[0];
+    var button = document.createElement('BUTTON');
+    button.innerHTML = 'Button ' + i;
+    addClickFunctionality(button, i);
+    body.appendChild(button);
+  }
+}
+
+function addClickFunctionality(button, num) {
+  button.onclick = function() {
+    alert('This is button ' + num);
+  };
+}
+
+// Using the let keyword
+// let makes it block scoped versus function scoped
+function createYetMoreButtons() {
+  for (let i = 1; i <= 5; i++) {
+    var body = document.getElementsByTagName('BODY')[0];
+    var button = document.createElement('BUTTON');
+    button.innerHTML = 'Button ' + i;
+    button.onclick = function() {
+      alert(`Button ${i} clikced!`);
+    };
+    body.appendChild(button);
+  }
+}
+createYetMoreButtons();
+
+// 5. What is a closure?
+// Pt 2 - Code out a sample closure that functions as intended.
+// A: A closure is an inner function that has access to
+// the scope of an outer function. Used for protecting variables from being
+// on the global scope like IIFE;
+// A closure has access to three scopes.
+// 1. It's own scope
+// 2. Outer function
+// 3. Global scope
+// A closure also has access to:
+// 1. its own parameters
+// 2. Paramaters of outer functions
+
+function greeting(first, last) {
+  var intro = 'Hello! Your name is: ';
+  function makeName() {
+    return intro + first + ' ' + last;
+  }
+  return makeName();
+}
+greeting('Kevin', 'Kabore');
+
+let globalVar = 'GLOBAL';
+function outerFunc(param1) {
+  let var1 = 'VAR ONE';
+  function innerFunc(param2) {
+    let var2 = 'VAR TWO';
+    console.log(globalVar);
+    console.log(var1);
+    console.log(var2);
+    console.log('param1: ' + param1);
+    console.log('param2: ' + param2);
+  }
+  innerFunc('Param One');
+}
+outerFunc('Param Two');
