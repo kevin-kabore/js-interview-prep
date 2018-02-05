@@ -178,3 +178,67 @@ function outerFunc(param1) {
   innerFunc('Param One');
 }
 outerFunc('Param Two');
+
+// 6. What is the 'this' keyword? How is it used?
+// A: The 'this' keyword refers to the value of the object
+// that invokes the function where 'this' is used
+// >> Refers to whatever object 'this' is inside of
+
+var house = {
+  price: 100000,
+  squareFeet: 2000,
+  owner: 'Kevin',
+  getPricePerSquareFoot: function() {
+    return this.price / this.squareFeet;
+  }
+};
+console.log(house.price);
+console.log(house.getPricePerSquareFoot());
+
+// 7. Describe what variable and function hoisting is and how it works
+// A: In JavaScript functions and variable declarations are automatically hoisted
+// to the top of the scope in which they are declared. Either Global or function
+// The process in which the JavaScript interpreter looks ahead and hoists all
+// the variable and function declarations to the top and assigns their values at run time
+
+// Function declarations are hoisted differently than function expressions.
+// Function declarations (declaration and definition)are hoisted to the top.
+// Function Expressions are not hoisted to the top. Only the declaration
+
+// EX:
+var color = 'red';
+// really interpreted as
+// var color;
+// assigned: color = 'red'
+
+// EX2:
+// console.log(getProduct(2,3)); // error getProduct is not a function
+var getProduct = function(a, b) {
+  return a * b;
+};
+// what happens:
+// var getProduct;
+//...
+// getProduct = function(a,b){return a * b}
+
+// var is function scoped
+// const, and let are block scoped.
+// -block scope: For loop, if else, while loop, etc.
+function getTotal() {
+  // let total;
+  // var multiplier;
+  // console.log(total); returns error: total is not defined
+  // console.log(multiplier); returns undefined
+
+  let total = 0; // block. hoisted to top of getTotal. NOT DECLARED.
+
+  for (var i = 0; i < 10; i++) {
+    // let valueToAdd;
+    let valueToAdd = i; // block. hoisted to top of for loop
+    var multiplier = 2; // var function scoped. Hoisted to top of function
+    total += valueToAdd * multiplier;
+  }
+
+  return total;
+}
+getTotal();
