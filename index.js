@@ -196,6 +196,8 @@ console.log(house.price);
 console.log(house.getPricePerSquareFoot());
 
 // 7. Describe what variable and function hoisting is and how it works
+// "Variables and functions are hoisted to the top of the scope that they are declared in."
+
 // A: In JavaScript functions and variable declarations are automatically hoisted
 // to the top of the scope in which they are declared. Either Global or function
 // The process in which the JavaScript interpreter looks ahead and hoists all
@@ -242,3 +244,49 @@ function getTotal() {
   return total;
 }
 getTotal();
+
+// 8. What will be logged out to the console when myCar.logColor() is ran
+var myCar = {
+  color: 'Blue',
+  logColor: function() {
+    var self = this; // references myCar Obj
+    console.log('In logColor - this.color: ' + this.color);
+    console.log('In logColor - self.color: ' + self.color);
+    (function() {
+      console.log('In IIFE - this.color: ' + this.color); // inside scope of new function this = global
+      console.log('In IIFE - self.color: ' + self.color); // self references myCar obj
+    })();
+  }
+};
+
+myCar.logColor();
+
+// In logColor - this.color: Blue
+// In logColor - self.color: Blue
+// In IIFE - this.color: undefined // this references global object since the IIFE is not a method on myCar
+// In IIFE - self.color: Blue
+
+// 9. What is the difference between the comparison operators == and === ?
+// A: == (equals) test for abstract equality so does not test for data type
+// while === (strict equals) tests for strict equality so tests for data type
+console.log(7 == '7'); // returns true
+// == converts both to the same type and compares them
+console.log(7 === '7'); // returns false
+
+// for == (equals)
+// number vs string --> String converted to Number. Comparison made
+// boolean vs non-boolean --> Non-bool converted to bool
+// object vs primitive data-type --> Obj is converted to primitive data-type
+
+// 9. What will be logged out to the console when logNumber is ran?
+var num = 50;
+
+function logNumber() {
+  console.log(num);
+  var num = 100;
+}
+
+logNumber();
+
+// A: undefined. num in logNumber will be hoisted to the top of logNumber
+// log will run before it is assigned 100.
