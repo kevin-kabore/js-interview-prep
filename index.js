@@ -278,7 +278,7 @@ console.log(7 === '7'); // returns false
 // boolean vs non-boolean --> Non-bool converted to bool
 // object vs primitive data-type --> Obj is converted to primitive data-type
 
-// 9. What will be logged out to the console when logNumber is ran?
+// 10. What will be logged out to the console when logNumber is ran?
 var num = 50;
 
 function logNumber() {
@@ -292,7 +292,14 @@ logNumber();
 // log will run before it is assigned 100.
 // if you use let, you will get referenceError instead. num is not defined
 
-// 10. Curry the function getProduct
+// 11. What is 'use strict' and what are benefits of using it?
+// Enforces stricter parsing and error handling in code
+// 1. Prevents use of global Variables
+// 2. All Paramater names for a function must be unique
+// 3. Error if try to delete properties that are not deletable
+// > delete Object.prototype
+
+// 12. Curry the function getProduct
 function getProduct(num1, num2) {
   return num1 * num2;
 }
@@ -326,7 +333,7 @@ console.log(travelTimeBosNyc); // returns inner func
 console.log(travelTimeBosNyc(80)); // returns 5 hours
 console.log(travelTimeBosNyc(100)); // returns 4 hours
 
-// 11. Write a function that keeps track of how many times it was called
+// 12. Write a function that keeps track of how many times it was called
 // and returns that number
 // All functionality should be inside of the function
 function myFunc() {
@@ -358,3 +365,19 @@ console.log('InstanceOne: ' + instanceOne()); // 3
 console.log('InstanceTwo: ' + instanceTwo()); // 1
 console.log('InstanceTwo: ' + instanceTwo()); // 2
 console.log('InstanceOne: ' + instanceOne()); // 4
+
+// 13. Logging X and Y
+// What will the value of X and Y be when logged?
+(function() {
+  var x = (y = 200);
+})();
+console.log('y: ' + y);
+console.log('x: ' + x);
+
+// SOLUTION
+// y: 200 --> y is getting declared as global variable y = 200. Then setting x = y
+// x: not defined --> defined within the scope of IIFE
+(function() {
+  y = 200;
+  var x = y;
+})();
