@@ -325,3 +325,36 @@ const travelTimeMiamiAtlanta = getTravelTimeCurried(600);
 console.log(travelTimeBosNyc); // returns inner func
 console.log(travelTimeBosNyc(80)); // returns 5 hours
 console.log(travelTimeBosNyc(100)); // returns 4 hours
+
+// 11. Write a function that keeps track of how many times it was called
+// and returns that number
+// All functionality should be inside of the function
+function myFunc() {
+  // fill in here
+}
+console.log(myFunc()); // returns 1
+console.log(myFunc()); // returns 2
+
+// SOLUTION
+// Can count by using closures  creating instances
+function myFuncSolution() {
+  var count = 0;
+  return function() {
+    // in reality
+    if (count < 4) {
+      // some computation/functionality
+    } else {
+      // throw error
+    }
+    count++;
+    return count;
+  };
+}
+const instanceOne = muFuncSolution();
+const instanceTwo = myFuncSolution();
+console.log('InstanceOne: ' + instanceOne()); // 1
+console.log('InstanceOne: ' + instanceOne()); // 2
+console.log('InstanceOne: ' + instanceOne()); // 3
+console.log('InstanceTwo: ' + instanceTwo()); // 1
+console.log('InstanceTwo: ' + instanceTwo()); // 2
+console.log('InstanceOne: ' + instanceOne()); // 4
