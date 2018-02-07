@@ -290,3 +290,38 @@ logNumber();
 
 // A: undefined. num in logNumber will be hoisted to the top of logNumber
 // log will run before it is assigned 100.
+// if you use let, you will get referenceError instead. num is not defined
+
+// 10. Curry the function getProduct
+function getProduct(num1, num2) {
+  return num1 * num2;
+}
+
+function getProductCurried(num1) {
+  return function(num2) {
+    return num1 * num2;
+  };
+}
+
+let getProductCurried1 = num1 => num2 => num1 * num2;
+
+// practical example
+// used for making a general function applicable to different scenarios
+
+function getTravelTime(distance, speed) {
+  return distance / speed;
+}
+
+function getTravelTimeCurried(distance) {
+  return function(speed) {
+    return distance / speed;
+  };
+}
+
+// want different times for different speeds
+const travelTimeBosNyc = getTravelTimeCurried(400);
+const travelTimeMiamiAtlanta = getTravelTimeCurried(600);
+
+console.log(travelTimeBosNyc); // returns inner func
+console.log(travelTimeBosNyc(80)); // returns 5 hours
+console.log(travelTimeBosNyc(100)); // returns 4 hours
