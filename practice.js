@@ -213,3 +213,25 @@ const list2 = list1;
 list1.push(6, 7, 8);
 
 console.log(list2);
+
+// 18. Singly or Double invoked
+// Create a function getTotal that can be singly or double invoked
+// getTotal(10,20) > 30
+// getTotal(10)(20) > 30
+
+function getTotal() {
+  if (arguments.length === 2) {
+    let total = [].slice.call(arguments).reduce((acc, next) => {
+      return acc + next;
+    });
+    return total;
+  } else {
+    let a = arguments[0];
+    return function(b) {
+      return a + b;
+    };
+  }
+}
+
+console.log(getTotal(10, 20));
+console.log(getTotal(10)(21));

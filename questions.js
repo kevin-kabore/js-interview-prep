@@ -98,3 +98,10 @@ const list2 = list1;
 list1.push(6, 7, 8);
 
 console.log(list2);
+
+// 17. How can we set list2 equal to same data as list1 without referencing
+
+// 18. Singly or Double invoked
+// Create a function getTotal that can be singly or double invoked
+// getTotal(10,20) > 30
+// getTotal(10)(20) > 30
