@@ -225,7 +225,7 @@ function getTotal() {
       return acc + next;
     });
     return total;
-  } else {
+  } else if (arguments.length === 1) {
     let a = arguments[0];
     return function(b) {
       return a + b;
@@ -235,3 +235,28 @@ function getTotal() {
 
 console.log(getTotal(10, 20));
 console.log(getTotal(10)(21));
+
+// 19. JSON
+// 1. Describe what JSON format is.
+// > JavaScript Object Notation
+// > Light-weight format for transferring data
+// > Used because:
+// > > Easy for humans to understand,
+// > > Easy for computer to parse & generate
+// > Must wrap all property names in double quotes
+// 2. Delete the data types not permitted in JSON.
+// Undefined, and Functions are not permitted in JSON
+// JSON used to transfer data, not compute logic so no functions
+// 3. Replace placeholder-text with the corresponding data type,
+//    properly formatted as JSON.
+
+const myJsonObj = {
+  myString: 'Some String',
+  myNumber: 10.5,
+  myNull: null,
+  myBoolean: true,
+  myArray: [1, 2, 3],
+  // myUndefined: [some undefined]
+  // myFunction: [some function],
+  myObject: { name: 'Kevin', age: 23 }
+};
