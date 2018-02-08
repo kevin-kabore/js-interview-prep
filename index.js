@@ -333,7 +333,7 @@ console.log(travelTimeBosNyc); // returns inner func
 console.log(travelTimeBosNyc(80)); // returns 5 hours
 console.log(travelTimeBosNyc(100)); // returns 4 hours
 
-// 12. Write a function that keeps track of how many times it was called
+// 13. Write a function that keeps track of how many times it was called
 // and returns that number
 // All functionality should be inside of the function
 function myFunc() {
@@ -366,7 +366,7 @@ console.log('InstanceTwo: ' + instanceTwo()); // 1
 console.log('InstanceTwo: ' + instanceTwo()); // 2
 console.log('InstanceOne: ' + instanceOne()); // 4
 
-// 13. Logging X and Y
+// 14. Logging X and Y
 // What will the value of X and Y be when logged?
 (function() {
   var x = (y = 200);
@@ -381,3 +381,39 @@ console.log('x: ' + x);
   y = 200;
   var x = y;
 })();
+
+// 14. Call & Apply Methods
+// Describe the JavaScript call() and apply() methods
+// 1. How do they function?
+// 2. What arguments to they take?
+// How are they different
+// A: Call & apply are methods on the Function prototype
+// // Function by invoking a function on a specified this argument and arguments
+// call takes (thisArg, arg1, arg2, ....)
+// apply takes (thisArg, [arg1, arg2, arg3])
+
+// call(): native js method on Function prototype
+// > Gives you an alternative way of calling your function
+// > Gives you ability to change 'this' context
+// apply(): same but takes array of args
+const car1 = {
+  brand: 'Porsche',
+  getCarDescription: function(cost, year, color) {
+    console.log(
+      `This car is a ${this
+        .brand}. The price is $${cost}. The year is ${year}. The color is ${color}. \n`
+    );
+  }
+};
+car1.getCarDescription(100000, 2015, 'black');
+
+const car2 = {
+  brand: 'Laborghini'
+};
+car1.getCarDescription.call(car2, 120000, 2018, 'blue');
+
+const car3 = {
+  brand: 'Ford'
+};
+
+car1.getCarDescription.apply(car3, [20000, 2012, 'orange']);
