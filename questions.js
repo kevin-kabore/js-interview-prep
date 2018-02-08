@@ -85,3 +85,16 @@ console.log(myFunc()); // returns 2
 })();
 console.log('y: ' + y);
 console.log('x: ' + x);
+
+// 15. Call & Apply Methods
+// Describe the JavaScript call() and apply() methods
+// 1. How do they function?
+// 2. What arguments to they take?
+// 3. How are they different
+
+// 16. What will list 2 contain when logged
+const list1 = [1, 2, 3, 4, 5];
+const list2 = list1;
+list1.push(6, 7, 8);
+
+console.log(list2);

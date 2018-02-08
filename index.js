@@ -382,7 +382,7 @@ console.log('x: ' + x);
   var x = y;
 })();
 
-// 14. Call & Apply Methods
+// 15. Call & Apply Methods
 // Describe the JavaScript call() and apply() methods
 // 1. How do they function?
 // 2. What arguments to they take?
@@ -417,3 +417,15 @@ const car3 = {
 };
 
 car1.getCarDescription.apply(car3, [20000, 2012, 'orange']);
+
+// 16. What will list 2 contain when logged
+const list1 = [1, 2, 3, 4, 5];
+const list2 = list1;
+list1.push(6, 7, 8);
+
+console.log(list2);
+
+// A: list2 was shallow copy of list1 will have [1,2,3,4,5,6,7,8]
+// Passing data by value vs reference.
+// Passing data by value: Primitive data type or has no properties (ex: string or number)
+// Passing data by reference: Reference another value
