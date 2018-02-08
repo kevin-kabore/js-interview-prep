@@ -429,3 +429,12 @@ console.log(list2);
 // Passing data by value vs reference.
 // Passing data by value: Primitive data type or has no properties (ex: string or number)
 // Passing data by reference: Reference another value
+
+// 17. How can we set list2 equal to same data as list1 without referencing
+const list3 = [1, 2, 3, 4, 5];
+const list4 = list3.slice();
+// const list4 = list3.concat([]); // concat with empty array and return new array
+// use for loop
+list1.push(6, 7, 8);
+
+console.log(list2);

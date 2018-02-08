@@ -206,3 +206,10 @@ const list2 = list1;
 list1.push(6, 7, 8);
 
 console.log(list2);
+
+// 17. How can we set list2 equal to same data as list1 without referencing
+const list1 = [1, 2, 3, 4, 5];
+const list2 = list1;
+list1.push(6, 7, 8);
+
+console.log(list2);
