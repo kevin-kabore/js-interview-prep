@@ -112,13 +112,30 @@ console.log(list2);
 // 3. Replace placeholder-text with the corresponding data type,
 //    properly formatted as JSON.
 
-const myJsonObj = {
-  myString: [some string],
-  myNumber: [some number],
-  myNull: [null],
-  myBoolean: [false],
-  myUndefined: [undefined],
-  myArray: [some array],
-  myFunction: [some function],
-  myObject: [some object]
-};
+// const myJsonObj = {
+//   myString: [some string],
+//   myNumber: [some number],
+//   myNull: [null],
+//   myBoolean: [false],
+//   myUndefined: [undefined],
+//   myArray: [some array],
+//   myFunction: [some function],
+//   myObject: [some object]
+// };
+
+// 20. What is going to be logged out in the console and in what order?
+
+function logNumbers() {
+  console.log(1);
+  setTimeout(function() {
+    console.log(2);
+  }, 1000);
+  setTimeout(function() {
+    console.log(3);
+  }, 0);
+  console.log(4);
+}
+
+logNumbers();
+
+// 21. 3 different ways to create an object

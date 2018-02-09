@@ -260,3 +260,44 @@ const myJsonObj = {
   // myFunction: [some function],
   myObject: { name: 'Kevin', age: 23 }
 };
+
+// const myJsonObj = {
+//   "myString": "hello world",
+//   "myNumber": 12345.6789,
+//   "myNull": null,
+//   "myBoolean": true,
+//   "myArray": [20, 30, "orange"],
+//   "myObject": {
+//     "name": "Sam",
+//     "age": 30
+//   }
+// };
+
+// 20. What is going to be logged out in the console and in what order?
+
+function logNumbers() {
+  console.log(1);
+  setTimeout(function() {
+    console.log(2);
+  }, 1000);
+  setTimeout(function() {
+    console.log(3);
+  }, 0);
+  console.log(4);
+}
+
+logNumbers();
+// 1
+// 4
+// 3
+// 2
+
+// Event loop
+// > queue where all events in browser are placed
+// > ex. click, setTimeout, callbacks
+// Pushed into queue and processed in order
+// pushed callbakc fn into event loop
+// log(4) runs bc not placed in event loop
+// then log(2) runs
+
+// 21. 3 different ways to create an object
