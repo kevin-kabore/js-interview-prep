@@ -301,3 +301,31 @@ logNumbers();
 // then log(2) runs
 
 // 21. 3 different ways to create an object
+// 1. Using literal syntax
+// > Main way of making objects
+var myObj1 = { number: 1 };
+console.log(myObj1);
+
+// 2. Using new keyword and Object constructor
+var myObj2 = new Object();
+myObj2.number = 2;
+console.log(myObj2);
+
+// 3. Using a constructor function
+// > Main way to make objects of the same class
+function Car(color, brand, year) {
+  this.color = color;
+  this.brand = brand;
+  this.year = year;
+}
+// Can add methods or other properties to the prototype
+Car.prototype.getColor = function() {
+  return this.color;
+};
+
+const myCar = new Car('black', 'Jaguar', '2018');
+const djsCar = new Car('blue', 'BMW', '2015');
+console.log(myCar);
+console.log(djsCar);
+console.log(myCar.getColor());
+console.log(djsCar.getColor());
