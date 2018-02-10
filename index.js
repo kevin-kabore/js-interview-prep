@@ -438,3 +438,178 @@ const list4 = list3.slice();
 list1.push(6, 7, 8);
 
 console.log(list2);
+
+// 18. Singly or Double invoked
+// Create a function getTotal that can be singly or double invoked
+// getTotal(10,20) > 30
+// getTotal(10)(20) > 30
+
+function getTotal() {
+  if (arguments.length === 2) {
+    let total = [].slice.call(arguments).reduce((acc, next) => {
+      return acc + next;
+    });
+    return total;
+  } else if (arguments.length === 1) {
+    let a = arguments[0];
+    return function(b) {
+      return a + b;
+    };
+  }
+}
+
+console.log(getTotal(10, 20));
+console.log(getTotal(10)(21));
+
+// 19. JSON
+// 1. Describe what JSON format is.
+// > JavaScript Object Notation
+// > Light-weight format for transferring data
+// > Used because:
+// > > Easy for humans to understand,
+// > > Easy for computer to parse & generate
+// > Must wrap all property names in double quotes
+// 2. Delete the data types not permitted in JSON.
+// Undefined, and Functions are not permitted in JSON
+// JSON used to transfer data, not compute logic so no functions
+// 3. Replace placeholder-text with the corresponding data type,
+//    properly formatted as JSON.
+
+const myJsonObj = {
+  myString: 'Some String',
+  myNumber: 10.5,
+  myNull: null,
+  myBoolean: true,
+  myArray: [1, 2, 3],
+  // myUndefined: [some undefined]
+  // myFunction: [some function],
+  myObject: { name: 'Kevin', age: 23 }
+};
+
+// const myJsonObj = {
+//   "myString": "hello world",
+//   "myNumber": 12345.6789,
+//   "myNull": null,
+//   "myBoolean": true,
+//   "myArray": [20, 30, "orange"],
+//   "myObject": {
+//     "name": "Sam",
+//     "age": 30
+//   }
+// };
+
+// 20. What is going to be logged out in the console and in what order?
+
+function logNumbers() {
+  console.log(1);
+  setTimeout(function() {
+    console.log(2);
+  }, 1000);
+  setTimeout(function() {
+    console.log(3);
+  }, 0);
+  console.log(4);
+}
+
+logNumbers();
+// 1
+// 4
+// 3
+// 2
+
+// Event loop
+// > queue where all events in browser are placed
+// > ex. click, setTimeout, callbacks
+// Pushed into queue and processed in order
+// pushed callbakc fn into event loop
+// log(4) runs bc not placed in event loop
+// then log(2) runs
+
+// 21. 3 different ways to create an object
+// object literal syntax
+const myBoat = {
+  length: 24,
+  maxSpeed: 45,
+  passengers: 14,
+  getLength: function() {
+    return this.length;
+  }
+};
+
+// new keyword & Object constructor
+const student = new Object();
+
+student.grade = 12;
+student.gradePointAverage = 3.7;
+student.classes = ['English', 'Algebra', 'Chemistry'];
+student.getClasses = function() {
+  return this.classes;
+};
+
+// constructor function
+function Car(color, brand, year) {
+  this.color = color;
+  this.brand = brand;
+  this.year = year;
+}
+
+Car.prototype.getColor = function() {
+  return this.color;
+};
+
+const carlysCar = new Car('blue', 'ferarri', 2015);
+const jimsCar = new Car('red', 'tesla', 2014);
+
+console.log(carlysCar.getColor());
+console.log(jimsCar.getColor());
+
+// 22. Type of data types
+// What will be logged to the console?
+console.log(typeof null); // object. Js feature
+console.log(typeof undefined); // undefined. Js feature
+console.log(typeof {}); // object
+console.log(typeof []); // object. In js Arrays are of type Object
+
+// Array is of type object
+// > To solve use:
+// > 1. Array.isArray()
+console.log(Array.isArray([])); // true
+console.log(Array.isArray({})); // false
+// > 2. instanceof Array
+console.log([] instanceof Array); // true
+console.log({} instanceof Array); // false
+
+// 23. The Bind Method
+// Describe the bind method
+// > Bind method allows you to bind
+//   the 'this' context of a function to a particular object
+
+// 1. Describe how it works
+// > Works by getting called on the function
+
+// 2. Explain the parameters that it takes
+// takes one or more arguments.
+// > 1st argument is the thisArg, second is param to the function.
+// > Can pass variable params by setting it equal to a variable and calling it with the arg
+
+// 3. Code out an example of how bind() is used
+this.distance = 1000;
+
+const roadTrip1 = {
+  distance: 2000,
+  getDistance: function(unit, caption) {
+    return this.distance + unit + caption;
+  }
+};
+
+const roadTrip2 = {
+  distance: 3000
+};
+// const getTripDistance = roadTrip1.getDistance;
+// getTripDistance(); // > 1000
+const getTrip1Distance = roadTrip1.getDistance.bind(roadTrip1, 'km');
+getTrip1distance('left to go'); // > 2000km left to go
+getTrip1distance('in total'); // > 2000km in total
+const getTrip2Distance = roadTrip1.getDistance.bind(roadTrip2, 'miles');
+getTrip2Distance('to go'); // > 3000miles to go
+getTrip2Distance('until the end'); // > 3000miles until the end

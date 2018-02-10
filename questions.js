@@ -139,3 +139,16 @@ function logNumbers() {
 logNumbers();
 
 // 21. 3 different ways to create an object
+
+// 22. Type of data types
+// What will be logged to the console?
+console.log(typeof null);
+console.log(typeof undefined);
+console.log(typeof {});
+console.log(typeof []);
+
+// 23. The Bind Method
+// Describe the bind method
+// 1. Describe how it works
+// 2. Explain the parameters that it takes
+// 3. Code out an example of how bind() is used

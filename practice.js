@@ -329,3 +329,29 @@ console.log(myCar);
 console.log(djsCar);
 console.log(myCar.getColor());
 console.log(djsCar.getColor());
+
+// 22. Type of data types
+// What will be logged to the console?
+console.log(typeof null); // object. Js feature
+console.log(typeof undefined); // undefined. Js feature
+console.log(typeof {}); // object
+console.log(typeof []); // object. In js Arrays are of type Object
+
+// 23. The Bind Method
+// Describe the bind method
+// 1. Describe how it works
+// Binds methods or properties to a specified object or 'this'
+// 2. Explain the parameters that it takes
+// Takes in thisArg to specify an object
+// 3. Code out an example of how bind() is used
+function sayHello() {
+  console.log(`Hi ${this.name}`);
+}
+
+var person = {
+  name: 'Kevin',
+  age: 23
+};
+
+sayHello.bind(person);
+person.sayHello();
