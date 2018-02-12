@@ -179,3 +179,11 @@ console.log('arr1: ', arr1);
 console.log('arr2: ', arr2);
 console.log('arr3: ', arr3);
 console.log('arr4: ', arr4);
+
+// 26. Array IndexOf
+// What will be logged out to the console?
+
+console.log([10, 20, 30, 40, 50].indexOf(30));
+console.log([{ name: 'Pam' }, { name: 'Kent' }].indexOf({ name: 'Kent' }));
+console.log('hello world'.indexOf('o'));
+console.log([[1], [2], [3], [4]].indexOf([2]));

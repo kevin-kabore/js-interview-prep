@@ -656,3 +656,23 @@ console.log('arr4: ', arr4); // 'arr1: [[1,2,3,4, 5]]'
 // single arg(number) => empty array of length number
 // single arg(non-number) => returns arr with that arg passed in
 // multiple args => new array with all arguments passed as elements
+
+// 26. Array IndexOf
+// What will be logged out to the console?
+// The indexOf() method returns the first index at which a given element can
+// be found in the array/string, or -1 if it is not present.
+
+const myArray = [5];
+const anotherArray = myArray;
+
+console.log([10, 20, 30, 40, 50].indexOf(30)); // 2
+console.log([{ name: 'Pam' }, { name: 'Kent' }].indexOf({ name: 'Kent' })); // -1
+console.log('hello world'.indexOf('o')); // 4
+console.log([[1], [2], [3], [4]].indexOf([2])); // -1
+console.log([[1], [2], [3], myArray].indexOf(myArray)); // 4
+console.log([[1], [2], [3], myArray].indexOf(anotherArray)); // 4
+
+// two objects are never the same
+// objects are passed by reference, not by value.
+// arrays are objects in javascript
+// But two variables that reference the same object are equal

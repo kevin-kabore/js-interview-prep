@@ -394,3 +394,10 @@ console.log('arr1: ', arr1); // 'arr1: []'
 console.log('arr2: ', arr2); // 'arr2: [<50 empty items>]'
 console.log('arr3: ', arr3); // 'arr3: [1, 2, 'three', 4, 'five']'
 console.log('arr4: ', arr4); // 'arr1: [[1,2,3,4, 5]]'
+
+// 26. Array IndexOf
+// What will be logged out to the console?
+console.log([10, 20, 30, 40, 50].indexOf(30)); // 2
+console.log([{ name: 'Pam' }, { name: 'Kent' }].indexOf({ name: 'Kent' })); // null
+console.log('hello world'.indexOf('o')); // 4
+console.log([[1], [2], [3], [4]].indexOf([2])); // null
