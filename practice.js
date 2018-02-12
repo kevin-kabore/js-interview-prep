@@ -355,3 +355,42 @@ var person = {
 
 sayHello.bind(person);
 person.sayHello();
+
+// 24. Two objects
+// What will be logged to the console?
+
+// Solution:
+// False both times because in JavaScript, pass objects by reference, not by value
+// Both variables referencing different objects in memory
+// setting user1 = user2 would however reference same object.
+
+// Can compare properties by JSON.stringify()
+// JSON.stringify turns JSON into Object into String
+// compage two strings
+const user1 = {
+  name: 'Jane',
+  age: 23
+};
+
+const user2 = {
+  name: 'Jane',
+  age: 23
+};
+
+console.log(user1 == user2); // false
+console.log(user1 === user2); // false
+console.log(JSON.stringify(user1) === JSON.stringify(user2)); // true. Strings passed by value. Not by reference.
+console.log([] == []); // false
+console.log(JSON.stringify([]) === JSON.stringify([])); // true. Arrays are objects
+
+// 25. Array Constructor
+// What will be logged out to the console?
+var arr1 = [];
+var arr2 = new Array(50);
+var arr3 = new Array(1, 2, 'three', 4, 'five');
+var arr4 = new Array([1, 2, 3, 4, 5]);
+
+console.log('arr1: ', arr1); // 'arr1: []'
+console.log('arr2: ', arr2); // 'arr2: [<50 empty items>]'
+console.log('arr3: ', arr3); // 'arr3: [1, 2, 'three', 4, 'five']'
+console.log('arr4: ', arr4); // 'arr1: [[1,2,3,4, 5]]'

@@ -152,3 +152,30 @@ console.log(typeof []);
 // 1. Describe how it works
 // 2. Explain the parameters that it takes
 // 3. Code out an example of how bind() is used
+
+// 24. Two objects
+// What will be logged to the console?
+const user1 = {
+  name: 'Jane',
+  age: 23
+};
+
+const user2 = {
+  name: 'Jane',
+  age: 23
+};
+
+console.log(user1 == user2);
+console.log(user1 === user2);
+
+// 25. Array Constructor
+// What will be logged out to the console?
+var arr1 = [];
+var arr2 = new Array(50);
+var arr3 = new Array(1, 2, 'three', 4, 'five');
+var arr4 = new Array([1, 2, 3, 4, 5]);
+
+console.log('arr1: ', arr1);
+console.log('arr2: ', arr2);
+console.log('arr3: ', arr3);
+console.log('arr4: ', arr4);
