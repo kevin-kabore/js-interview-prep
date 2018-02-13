@@ -738,3 +738,54 @@ const data2 = [].filter.call(data1, function(elem, index) {
 
 console.log(data2);
 // ['S', 'm', 'i', 't', 'h']
+
+// 30. Object Properties
+// Key concepts: Only strings can be properties on an object
+const a = {};
+const b = { name: 'b' };
+const c = { name: 'c' };
+
+a[b] = 200; // setting object property b to 200.
+// a['[object Object]'] = 200
+a[c] = 400; // setting object property c to 400.
+// a['[object Object]'] = 400
+// in js props can only be strings. js parses a[b] as a['[object Object]']
+// same with object c. Sets a['[object Object]'] = 400
+
+console.log(a[b]); // {'[object Object]': 400}
+
+// 31. X and Y
+var x = 10;
+
+function y() {
+  // function x() {} // x is hoisted
+  x = 100; // reassigned to 100
+  return; // x never reassigned to be a function
+  function x() {}
+}
+
+y();
+
+console.log(x); // returns 10
+
+// 32. Withdraw From Account
+const account1 = {
+  name: 'Jen',
+  totalAmount: 5000,
+  deductAmount: function(amount) {
+    this.totalAmount -= amount;
+    return 'Amount in account: ' + this.totalAmount;
+  }
+};
+
+const account2 = {
+  name: 'James',
+  totalAmount: 8000
+};
+
+const withdrawFromAccount = function(amount) {
+  return account1.deductAmount.bind(account2, amount);
+};
+
+console.log(withdrawFromAccount(500)()); // 7500
+console.log(withdrawFromAccount(200)()); // 7300

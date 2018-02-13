@@ -449,3 +449,27 @@ const data2 = [].filter.call(data1, function(elem, index) {
 });
 
 console.log(data2);
+
+// 30. Object Properties
+const a = {};
+const b = { name: 'b' };
+const c = { name: 'c' };
+
+a[b] = 200;
+a[c] = 400;
+
+console.log(a[b]);
+
+// 31. X and Y
+var x = 10;
+
+function y() {
+  // function x() {} // x is hoisted
+  x = 100; // reassigned to 100
+  return; // x never reassigned to be a function
+  function x() {}
+}
+
+y();
+
+console.log(x); // returns 10

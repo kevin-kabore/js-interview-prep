@@ -195,6 +195,7 @@ console.log(900.9 === 300.3 * 3);
 
 // 28. Objects & Strings
 // What will be logged out to the console?
+// Why?
 var string1 = 'Tampa';
 var string2 = string1;
 string1 = 'Venice';
@@ -213,3 +214,60 @@ var person2 = person1;
 person2.name = 'Kyle';
 
 console.log(person1);
+
+// 29. Strings & Arrays
+// Explain code
+// What will be logged as data2
+const data1 = 'Jordan Smith';
+
+const data2 = [].filter.call(data1, function(elem, index) {
+  return index > 6;
+});
+
+console.log(data2);
+
+// 30. Object Properties
+const a = {};
+const b = { name: 'b' };
+const c = { name: 'c' };
+
+a[b] = 200;
+a[c] = 400;
+
+console.log(a[b]);
+
+// 31. x and Y
+// What will be logged
+var x = 10;
+
+function y() {
+  x = 100;
+  return;
+  function x() {}
+}
+
+y();
+
+console.log(x);
+
+// 32. Withdraw From Account
+const account1 = {
+  name: 'Jen',
+  totalAmount: 5000,
+  deductAmount: function(amount) {
+    this.totalAmount -= amount;
+    return 'Amount in account: ' + this.totalAmount;
+  }
+};
+
+const account2 = {
+  name: 'James',
+  totalAmount: 8000
+};
+
+const withdrawFromAccount = function(amount) {
+  return account1.deductAmount.bind(account2, amount);
+};
+
+console.log(withdrawFromAccount(500)());
+console.log(withdrawFromAccount(200)());
