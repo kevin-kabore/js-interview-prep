@@ -676,3 +676,65 @@ console.log([[1], [2], [3], myArray].indexOf(anotherArray)); // 4
 // objects are passed by reference, not by value.
 // arrays are objects in javascript
 // But two variables that reference the same object are equal
+
+// 27. Equivalent Numbers with decimals
+// What will be logged?
+console.log(900.9 === 300.3 * 3); // false
+// How can you circumvent?
+// 1. number.toFixed(decimal points
+Number((300.3 * 3).toFixed(2)); // fix to 2 decimals returns String
+// 2. number.toPrecision(decimal points)
+Number((300.3 * 3).toPrecision(12));
+// 3. multiply out the decimal
+300.3 * 10 * 3 / 10;
+
+// 28. Objects & Strings
+// What will be logged out to the console?
+var string1 = 'Tampa';
+var string2 = string1; // string2 = Tampa
+string1 = 'Venice'; // strings passed by value
+// does not affect string2
+
+console.log(string2);
+// Tampa
+
+////////////////////////////////
+
+var person1 = {
+  name: 'Alex',
+  age: 30
+};
+
+var person2 = person1; // objects passed by reference
+// person1 & person2 reference the same object
+
+person2.name = 'Kyle';
+
+console.log(person1);
+// {name: 'Kyle', age: 30 }
+
+// 29. Strings & Arrays
+// Key concept: Using array methods on strings/
+// Can only use 'read-only' methods:  filter, forEach, map, some, every, etc.
+// Cannot use: push, pop, slice, shift, reverse, etc. Change string
+
+// Explain code
+// Setting data1 = string
+// Using Array filter method on string by using [].filter.call
+// setting this context to data1 string
+// Array.prototype.filter returns array
+
+// What will be logged as data2
+const data1 = 'Jordan Smith';
+
+// Array.prototype.filter
+// takes callback with current el and index
+// return true or false value
+// if true, elem placed in new array
+// if false, not placed
+const data2 = [].filter.call(data1, function(elem, index) {
+  return index > 6;
+});
+
+console.log(data2);
+// ['S', 'm', 'i', 't', 'h']

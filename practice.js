@@ -401,3 +401,51 @@ console.log([10, 20, 30, 40, 50].indexOf(30)); // 2
 console.log([{ name: 'Pam' }, { name: 'Kent' }].indexOf({ name: 'Kent' })); // null
 console.log('hello world'.indexOf('o')); // 4
 console.log([[1], [2], [3], [4]].indexOf([2])); // null
+
+// 27. Equivalent Numbers with decimals
+// What will be logged?
+console.log(900.9 === 300.3 * 3); // false
+// How can you circumvent?
+// 1. number.toFixed(decimal points
+Number((300.3 * 3).toFixed(2)); // fix to 2 decimals returns String
+// 2. number.toPrecision(decimal points)
+Number((300.3 * 3).toPrecision(12));
+// 3. multiply out the decimal
+300.3 * 10 * 3 / 10;
+
+// 28. Objects & Strings
+// What will be logged out to the console?
+var string1 = 'Tampa';
+var string2 = string1;
+string1 = 'Venice';
+
+console.log(string2);
+
+////////////////////////////////
+
+var person1 = {
+  name: 'Alex',
+  age: 30
+};
+
+var person2 = person1;
+
+person2.name = 'Kyle';
+
+console.log(person1);
+
+// 29. Strings & Arrays
+// Explain code
+// setting data1 to a string
+// calling arr.filter on data1 and keeping everything after index = 6 in array
+
+// What will be logged as data2
+// > ['S', 'm', 'i', 't', 'h']
+const data1 = 'Jordan Smith';
+
+// Array.prototype.filter
+const data2 = [].filter.call(data1, function(elem, index) {
+  return index > 6;
+});
+
+console.log(data2);

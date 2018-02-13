@@ -187,3 +187,29 @@ console.log([10, 20, 30, 40, 50].indexOf(30));
 console.log([{ name: 'Pam' }, { name: 'Kent' }].indexOf({ name: 'Kent' }));
 console.log('hello world'.indexOf('o'));
 console.log([[1], [2], [3], [4]].indexOf([2]));
+
+// 27. Equivalent Numbers
+// What will be logged?
+// How can you circumvent?
+console.log(900.9 === 300.3 * 3);
+
+// 28. Objects & Strings
+// What will be logged out to the console?
+var string1 = 'Tampa';
+var string2 = string1;
+string1 = 'Venice';
+
+console.log(string2);
+
+////////////////////////////////
+
+var person1 = {
+  name: 'Alex',
+  age: 30
+};
+
+var person2 = person1;
+
+person2.name = 'Kyle';
+
+console.log(person1);
